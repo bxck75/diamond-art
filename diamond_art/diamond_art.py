@@ -2,7 +2,7 @@
 from importlib import resources
 from typing import Dict, Tuple
 
-import numpy as np
+import numpy as np  # type: ignore
 from PIL import Image, ImageDraw, ImageFont  # type: ignore
 
 from .data.fonts import Noto_Sans_Symbols
@@ -49,7 +49,7 @@ class DiamondArt:
             for y in range(self.original.size[1]):
                 sym, font = symbols[imdata[y, x]]
                 draw.text(
-                    ((x + 0.5) * self.scale, (y + 0.5) * self.scale),
+                    np.array([x, y]) * self.scale + 1 + (self.scale - 1) / 2,
                     sym,
                     font=font,
                     anchor="mm",
@@ -70,7 +70,9 @@ class DiamondArt:
             with resources.path(
                 Noto_Sans_Symbols, "NotoSansSymbols-Regular.ttf"
             ) as fontpath:
-                font = ImageFont.truetype(str(fontpath), 24, encoding="unic")
+                # Choose font size such that ascender+descender will fit in a box
+                font_size = (self.scale - 1) * 3 // 4
+                font = ImageFont.truetype(str(fontpath), font_size, encoding="unic")
                 symbol_list = "🜁🝪🜶🜷🝅⚓♈⚛⚑♋⛴"
                 # symbol_list = "●★✖❤✝✈☂⚓"
                 if len(symbol_list) < len(self.original.getcolors()):

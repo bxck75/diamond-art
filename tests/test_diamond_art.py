@@ -4,9 +4,9 @@
 
 from importlib import resources
 
-import numpy as np
-import pytest
-from PIL import Image
+import numpy as np  # type: ignore
+import pytest  # type: ignore
+from PIL import Image  # type: ignore
 
 from diamond_art import DiamondArt
 
@@ -16,7 +16,7 @@ from . import images
 @pytest.fixture()
 def test_images():
     """Pair of test image and expected result (within images package)"""
-    return [("1px.png", "1px_painting.png")]
+    return [("1px.png", "1px_canvas.png")]
 
 
 def test_end_to_end(test_images):

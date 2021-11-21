@@ -21,7 +21,6 @@ setup_requirements = []
 test_requirements = [
     "tox",
     "flake8",
-    "coverage",
     "black",
     "mypy",
     "isort",
@@ -61,10 +60,14 @@ setup(
     keywords="diamond_art",
     name="diamond_art",
     packages=find_packages(include=["diamond_art", "diamond_art.*"]),
+    package_data={
+        "": ["*.md", "CHANGELOG.md"],
+        "diamond_art.data.fonts.Noto_Sans_Symbols": ["*.ttf"],
+    },
     setup_requires=setup_requirements,
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/sbliven/diamond_art",
     version="0.1.0",
-    zip_safe=False,
+    zip_safe=True,
 )
