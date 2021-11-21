@@ -1,1 +1,1 @@
-"""Unit test package for gem_painting."""
+"""Unit test package for diamond_art."""

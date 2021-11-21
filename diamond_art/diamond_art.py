@@ -7,7 +7,7 @@ from .data.fonts import Noto_Sans_Symbols
 
 class SymbolError(IndexError): pass
 
-class GemPainting:
+class DiamondArt:
     original: Image
     scale: int  # pixels per grid
     dpi: float  # output resolution, in dots/inch

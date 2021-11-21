@@ -1,15 +1,15 @@
 
-[![PyPi Release](https://img.shields.io/pypi/v/gem_painting.svg)](https://pypi.python.org/pypi/gem_painting)
-[![Build Status](https://img.shields.io/travis/sbliven/gem_painting.svg)](https://travis-ci.com/sbliven/gem_painting)
-[![Documentation Status](https://readthedocs.org/projects/gem-painting/badge/?version=latest)](https://gem-painting.readthedocs.io/en/latest/?version=latest)
+[![PyPi Release](https://img.shields.io/pypi/v/diamond_art.svg)](https://pypi.python.org/pypi/diamond_art)
+[![Build Status](https://img.shields.io/travis/sbliven/diamond_art.svg)](https://travis-ci.com/sbliven/diamond_art)
+[![Documentation Status](https://readthedocs.org/projects/diamond-art/badge/?version=latest)](https://diamond-art.readthedocs.io/en/latest/?version=latest)
 
-# Gem Painting
+# Diamond Art
 
-Convert pixel art to gem painting templates
+Convert pixel images to diamond art templates
 
 
 * Free software: BSD license
-* Documentation: https://gem-painting.readthedocs.io.
+* Documentation: https://diamond-art.readthedocs.io.
 
 
 ## Features

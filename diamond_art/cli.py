@@ -1,18 +1,18 @@
-"""Console script for gem_painting."""
+"""Console script for diamond_art."""
 import sys
 import click
 
-from gem_painting.gem_painting import SymbolError
-from . import GemPainting
+from diamond_art.diamond_art import SymbolError
+from . import DiamondArt
 
 
 @click.command()
 @click.argument("input")
 @click.argument("output")
 def main(input, output):
-    """Console script for gem_painting."""
+    """Console script for diamond_art."""
     try:
-        painting = GemPainting(input)
+        painting = DiamondArt(input)
         painting.save(output)
     except SymbolError as err:
         click.echo(err, err=True)
