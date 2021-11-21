@@ -2,32 +2,24 @@
 
 """Tests for `gem_painting` package."""
 
-
-import unittest
-from click.testing import CliRunner
-
-from gem_painting import gem_painting
+import pytest
+from gem_painting import GemPainting
 from gem_painting import cli
 
+from . import images
+from importlib import resources
+from PIL import Image
+import numpy as np
 
-class TestGem_painting(unittest.TestCase):
-    """Tests for `gem_painting` package."""
+@pytest.fixture()
+def test_images():
+    """Pair of test image and expected result (within images package)"""
+    return [("1px.png", "1px_painting.png")]
 
-    def setUp(self):
-        """Set up test fixtures, if any."""
-
-    def tearDown(self):
-        """Tear down test fixtures, if any."""
-
-    def test_000_something(self):
-        """Test something."""
-
-    def test_command_line_interface(self):
-        """Test the CLI."""
-        runner = CliRunner()
-        result = runner.invoke(cli.main)
-        assert result.exit_code == 0
-        assert 'gem_painting.cli.main' in result.output
-        help_result = runner.invoke(cli.main, ['--help'])
-        assert help_result.exit_code == 0
-        assert '--help  Show this message and exit.' in help_result.output
+def test_end_to_end(test_images):
+    for input_file, expected_file in test_images:
+        with resources.path(images, input_file) as input_path:
+            img = GemPainting(input_path).get_image()
+            with resources.path(images, expected_file) as expected_path:
+                expected_img = Image.open(expected_path)
+                assert np.all(np.asarray(img) == np.asarray(expected_img))

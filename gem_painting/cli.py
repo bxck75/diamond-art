@@ -2,13 +2,21 @@
 import sys
 import click
 
+from gem_painting.gem_painting import SymbolError
+from . import GemPainting
+
 
 @click.command()
-def main(args=None):
+@click.argument("input")
+@click.argument("output")
+def main(input, output):
     """Console script for gem_painting."""
-    click.echo("Replace this message by putting your code into "
-               "gem_painting.cli.main")
-    click.echo("See click documentation at https://click.palletsprojects.com/")
+    try:
+        painting = GemPainting(input)
+        painting.save(output)
+    except SymbolError as err:
+        click.echo(err, err=True)
+        exit(1)
     return 0
 
 
