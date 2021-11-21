@@ -2,19 +2,22 @@
 
 """Tests for `diamond_art` package."""
 
+from importlib import resources
+
+import numpy as np
 import pytest
+from PIL import Image
+
 from diamond_art import DiamondArt
-from diamond_art import cli
 
 from . import images
-from importlib import resources
-from PIL import Image
-import numpy as np
+
 
 @pytest.fixture()
 def test_images():
     """Pair of test image and expected result (within images package)"""
     return [("1px.png", "1px_painting.png")]
+
 
 def test_end_to_end(test_images):
     for input_file, expected_file in test_images:

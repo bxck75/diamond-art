@@ -1,8 +1,10 @@
 """Console script for diamond_art."""
 import sys
+
 import click
 
 from diamond_art.diamond_art import SymbolError
+
 from . import DiamondArt
 
 

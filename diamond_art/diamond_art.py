@@ -1,11 +1,16 @@
 """Main module."""
-import numpy as np
-from PIL import Image, ImageDraw, ImageFont  # type: ignore
 from importlib import resources
 from typing import Dict, Tuple
+
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont  # type: ignore
+
 from .data.fonts import Noto_Sans_Symbols
 
-class SymbolError(IndexError): pass
+
+class SymbolError(IndexError):
+    pass
+
 
 class DiamondArt:
     original: Image
@@ -67,9 +72,11 @@ class DiamondArt:
             ) as fontpath:
                 font = ImageFont.truetype(str(fontpath), 24, encoding="unic")
                 symbol_list = "🜁🝪🜶🜷🝅⚓♈⚛⚑♋⛴"
-                #symbol_list = "●★✖❤✝✈☂⚓"
+                # symbol_list = "●★✖❤✝✈☂⚓"
                 if len(symbol_list) < len(self.original.getcolors()):
-                    raise SymbolError(f"Too many colors (max {len(symbol_list)} colors)")
+                    raise SymbolError(
+                        f"Too many colors (max {len(symbol_list)} colors)"
+                    )
                 self._symbols = {
                     col: (sym, font)
                     for (n, col), sym in zip(self.original.getcolors(), symbol_list)
