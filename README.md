@@ -27,7 +27,7 @@ and installed with
 First create your image. My 6 year old son created this image of a house using a pixel
 editor (scaled up for visibility).
 
-![Pixel image of a house](examples/house_6yo_big.png)
+![Pixel image of a house](https://raw.githubusercontent.com/sbliven/diamond-art/master/examples/house_6yo_big.png)
 
 This can be converted to a diamond painting using the command line tool:
 
@@ -35,7 +35,7 @@ This can be converted to a diamond painting using the command line tool:
 
 which produces this:
 
-![Diamond art template of a house](examples/house_6yo_canvas.png)
+![Diamond art template of a house](https://raw.githubusercontent.com/sbliven/diamond-art/master/examples/house_6yo_canvas.png)
 
 When printed at 100% scale (approximately 300 dpi by default) the resulting canvas will
 fit 2.5mm gems perfectly.
