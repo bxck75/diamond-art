@@ -74,9 +74,8 @@ These are tested by the 'lint' tox environment:
 
 7. Push!
 
-        git push
-        git push --tags
         twine upload -s --identity 780796DF dist/*
+        git push --tags
 
 8. Bump version number in __init__.py to .dev0
 
