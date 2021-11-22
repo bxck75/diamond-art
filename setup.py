@@ -56,6 +56,7 @@ setup(
     },
     license="BSD license",
     long_description=readme + "\n\n" + history,
+    long_description_content_type="text/markdown",
     include_package_data=True,
     keywords="diamond_art",
     name="diamond_art",

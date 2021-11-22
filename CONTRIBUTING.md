@@ -59,18 +59,18 @@ These are tested by the 'lint' tox environment:
 
         python setup.py sdist bdist_wheel
 
-4. Tag
-
-        git tag -s -a v0.1.0
-
-5. Run checks
+4. Run checks
 
         twine check dist/*
         git verify-tag v0.1.0
 
-6. Push to testing
+5. Push to testing
 
         twine upload --repository testpypi -s --identity 780796DF dist/*
+
+6. Tag
+
+        git tag -s -a v0.1.0
 
 7. Push!
 
