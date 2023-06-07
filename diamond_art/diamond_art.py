@@ -64,6 +64,7 @@ class DiamondArt:
     def set_dpi(self, target_dpi):
         self.scale = round(target_dpi / 25.4 * self.gem_size)  # px/grid
         self.dpi = self.scale * 25.4 / self.gem_size
+        print(self.dpi)
 
     def get_symbols(self):
         if self._symbols is None:
@@ -83,4 +84,5 @@ class DiamondArt:
                     col: (sym, font)
                     for (n, col), sym in zip(self.original.getcolors(), symbol_list)
                 }
+        print(self._symbols)
         return self._symbols
