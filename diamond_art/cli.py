@@ -20,10 +20,19 @@ from . import DiamondArt
     ),
     default=300,
 )
-def main(input, output, dpi):
+@click.option(
+    "-g",
+    "--g_size",
+    help=(
+        "gem size (in mm). The exact "
+        "gemsize wil vary if printed."
+    ),
+    default=2.5,
+)
+def main(input, output, g_size, dpi):
     """Console script for diamond_art."""
     try:
-        painting = DiamondArt(input, target_dpi=dpi)
+        painting = DiamondArt(input, gem_size=g_size, target_dpi=dpi)
         painting.save(output)
     except SymbolError as err:
         click.echo(err, err=True)
