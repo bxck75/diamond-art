@@ -67,7 +67,37 @@ class DiamondArt:
         self.scale = round(target_dpi / 25.4 * self.gem_size)  # px/grid
         self.dpi = self.scale * 25.4 / self.gem_size
         print(self.dpi)
+        
+    def get_chinese_symbols(self):
+        from bs4 import BeautifulSoup
+        import requests
+        main_site ='https://dictionary.writtenchinese.com'
+        cat_links = []
+        char_links = []
 
+
+        page = requests.get(main_site)
+        soup = BeautifulSoup(page.content, "html.parser")
+
+        for ahref in soup.find_all('a'):
+
+          if '/stroke.action' in ahref['href']:
+            cat_links.append(main_site+ahref['href'])
+
+        print(cat_links)  # footer category links 
+
+        # get symbols from every cat_link
+        for cat_link in cat_links:
+          cat_page = requests.get(cat_link)
+          soup = BeautifulSoup(cat_page.content, "html.parser")
+          for ahref in soup.find_all('a'):
+            if '/worddetail/' in ahref['href']:
+              split = ahref.text.split(' ')
+              char_links.append(split[0])
+        print(len(char_links)) 
+        return char_links
+        
+        
     def get_symbols(self):
         if self._symbols is None:
             with resources.path(
@@ -76,8 +106,9 @@ class DiamondArt:
                 # Choose font size such that ascender+descender will fit in a box
                 font_size = (self.scale - 1) * 3 // 4
                 font = ImageFont.truetype(str(fontpath), font_size, encoding="unic")
-                symbol_list = "🜁🝪🜶🜷🝅⚓♈⚛⚑♋⛴●★✖❤✝✈☂"
-                symbol_list += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+                #symbol_list = "🜁🝪🜶🜷🝅⚓♈⚛⚑♋⛴●★✖❤✝✈☂"
+                #symbol_list += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+                symbol_list = ''.join(get_chinese_symbols())
                 print(len(symbol_list))
                 if len(symbol_list) < len(self.original.getcolors()):
                     raise SymbolError(
