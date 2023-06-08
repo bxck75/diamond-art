@@ -48,8 +48,7 @@ class DiamondArt:
         for x in range(self.original.size[0]):
             for y in range(self.original.size[1]):
                 sym, font = symbols[imdata[y, x]]
-                print(sym)
-                print(font)
+
                 draw.text(
                     np.array([x, y]) * self.scale + 1 + (self.scale - 1) / 2,
                     sym,
@@ -87,7 +86,7 @@ class DiamondArt:
                     )
                 self._symbols = {
                     col: (sym, font)
-                    print(zip(self.original.getcolors(), symbol_list))
+                    
                     for (n, col), sym in zip(self.original.getcolors(), symbol_list)
                 }
         print(self._symbols)
