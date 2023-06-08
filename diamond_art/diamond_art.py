@@ -106,11 +106,10 @@ class DiamondArt:
                 # Choose font size such that ascender+descender will fit in a box
                 font_size = (self.scale - 1) * 3 // 4
                 font = ImageFont.truetype(str(fontpath), font_size, encoding="unic")
-                symbol_list = "🜁🝪🜶🜷🝅⚓♈⚛⚑♋⛴●★✖❤✝✈☂"
-                symbol_list += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-                #symbol_list = ''.join(get_chinese_symbols()[:32])
-                print(len(symbol_list))
-                print(symbol_list)
+                
+                #symbol_list = "🜁🝪🜶🜷🝅⚓♈⚛⚑♋⛴●★✖❤✝✈☂"
+                symbol_list = "●ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789★"
+
                 if len(symbol_list) < len(self.original.getcolors()):
                     raise SymbolError(
                         f"Too many colors (max {len(symbol_list)} colors)"
