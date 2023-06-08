@@ -108,7 +108,7 @@ class DiamondArt:
                 font = ImageFont.truetype(str(fontpath), font_size, encoding="unic")
                 #symbol_list = "🜁🝪🜶🜷🝅⚓♈⚛⚑♋⛴●★✖❤✝✈☂"
                 #symbol_list += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-                symbol_list = ''.join(get_chinese_symbols())
+                symbol_list = ''.join(get_chinese_symbols()[:32])
                 print(len(symbol_list))
                 print(symbol_list)
                 if len(symbol_list) < len(self.original.getcolors()):
