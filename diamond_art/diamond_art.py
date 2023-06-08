@@ -68,35 +68,6 @@ class DiamondArt:
         self.dpi = self.scale * 25.4 / self.gem_size
         print(self.dpi)
         
-    def get_chinese_symbols(self):
-        from bs4 import BeautifulSoup
-        import requests
-        main_site ='https://dictionary.writtenchinese.com'
-        cat_links = []
-        char_links = []
-
-
-        page = requests.get(main_site)
-        soup = BeautifulSoup(page.content, "html.parser")
-
-        for ahref in soup.find_all('a'):
-
-          if '/stroke.action' in ahref['href']:
-            cat_links.append(main_site+ahref['href'])
-
-        print(cat_links)  # footer category links 
-
-        # get symbols from every cat_link
-        for cat_link in cat_links:
-          cat_page = requests.get(cat_link)
-          soup = BeautifulSoup(cat_page.content, "html.parser")
-          for ahref in soup.find_all('a'):
-            if '/worddetail/' in ahref['href']:
-              split = ahref.text.split(' ')
-              char_links.append(split[0])
-        print(len(char_links)) 
-        return char_links
-        
         
     def get_symbols(self):
         if self._symbols is None:
@@ -116,6 +87,7 @@ class DiamondArt:
                     )
                 self._symbols = {
                     col: (sym, font)
+                    print(zip(self.original.getcolors(), symbol_list))
                     for (n, col), sym in zip(self.original.getcolors(), symbol_list)
                 }
         print(self._symbols)
