@@ -110,6 +110,7 @@ class DiamondArt:
                 #symbol_list += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
                 symbol_list = ''.join(get_chinese_symbols())
                 print(len(symbol_list))
+                print(symbol_list)
                 if len(symbol_list) < len(self.original.getcolors()):
                     raise SymbolError(
                         f"Too many colors (max {len(symbol_list)} colors)"
