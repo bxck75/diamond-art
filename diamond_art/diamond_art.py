@@ -48,6 +48,8 @@ class DiamondArt:
         for x in range(self.original.size[0]):
             for y in range(self.original.size[1]):
                 sym, font = symbols[imdata[y, x]]
+                print(sym)
+                print(font)
                 draw.text(
                     np.array([x, y]) * self.scale + 1 + (self.scale - 1) / 2,
                     sym,
@@ -74,8 +76,8 @@ class DiamondArt:
                 # Choose font size such that ascender+descender will fit in a box
                 font_size = (self.scale - 1) * 3 // 4
                 font = ImageFont.truetype(str(fontpath), font_size, encoding="unic")
-                #symbol_list = "🜁🝪🜶🜷🝅⚓♈⚛⚑♋⛴●★✖❤✝✈☂"
-                symbol_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789★●"
+                symbol_list = "🜁🝪🜶🜷🝅⚓♈⚛⚑♋⛴●★✖❤✝✈☂"
+                symbol_list += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
                 print(len(symbol_list))
                 if len(symbol_list) < len(self.original.getcolors()):
                     raise SymbolError(
